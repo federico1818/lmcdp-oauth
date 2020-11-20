@@ -39,13 +39,16 @@ export class LoginComponent implements OnInit {
                 this.form.value.password
             )
         ).pipe(
-            catchError((error: HttpErrorResponse) => {
-                if(error.error['error'] == 'invalid_grant')
-                    this.invalid_grant = true
-                return throwError(error.error)
-            })
-        ).subscribe(res => {
+            catchError(this.handleError.bind(this))
+        ).subscribe((res) => {
             this.invalid_grant = false
+            console.log(res)
         })
+    }
+
+    private handleError(error: HttpErrorResponse) {
+        if(error.error['error'] == 'invalid_grant')
+                this.invalid_grant = true
+        return throwError(error.error)
     }
 }
