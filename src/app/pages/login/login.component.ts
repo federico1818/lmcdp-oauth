@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
+import { OauthService } from '@federico1818/passport'
 
 @Component({
     selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
     })
 
     constructor(
-        private fb: FormBuilder
+        protected fb: FormBuilder,
+        protected oauthService: OauthService
     ) {}
 
     ngOnInit(): void {
@@ -21,6 +23,12 @@ export class LoginComponent implements OnInit {
 
     public onSubmit(): void {
         if(this.form.valid)
-            console.log(this.form.value)
+            this.login()
+    }
+
+    public login(): void {
+        this.oauthService.login().subscribe(() => {
+            console.log('Login')
+        })
     }
 }
