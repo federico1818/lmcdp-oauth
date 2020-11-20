@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
-import { OauthService } from '@federico1818/passport'
+import { HttpErrorResponse } from '@angular/common/http'
+
+import { OauthService, Credentials } from '@federico1818/passport'
+import { throwError } from 'rxjs'
+import { catchError } from 'rxjs/operators'
 
 @Component({
     selector: 'app-login',
@@ -8,6 +12,8 @@ import { OauthService } from '@federico1818/passport'
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+    public invalid_grant: boolean = false 
+
     public form = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]]
@@ -27,8 +33,19 @@ export class LoginComponent implements OnInit {
     }
 
     public login(): void {
-        this.oauthService.login().subscribe(() => {
-            console.log('Login')
+        this.oauthService.login(
+            new Credentials(
+                this.form.value.email,
+                this.form.value.password
+            )
+        ).pipe(
+            catchError((error: HttpErrorResponse) => {
+                if(error.error['error'] == 'invalid_grant')
+                    this.invalid_grant = true
+                return throwError(error.error)
+            })
+        ).subscribe(res => {
+            this.invalid_grant = false
         })
     }
 }
