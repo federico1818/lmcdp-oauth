@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { HttpErrorResponse } from '@angular/common/http'
 
@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators'
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     public invalid_grant: boolean = false 
 
     public form = this.fb.group({
@@ -23,9 +23,6 @@ export class LoginComponent implements OnInit {
         protected fb: FormBuilder,
         protected oauthService: OauthService
     ) {}
-
-    ngOnInit(): void {
-    }
 
     public onSubmit(): void {
         if(this.form.valid)
