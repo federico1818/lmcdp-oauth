@@ -30,16 +30,10 @@ export class LoginComponent {
     }
 
     public login(): void {
-        this.oauthService.login(
-            new Credentials(
-                this.form.value.email,
-                this.form.value.password
-            )
-        ).pipe(
+        this.oauthService.login(this.form.value).pipe(
             catchError(this.handleError.bind(this))
-        ).subscribe((res) => {
+        ).subscribe((res: any) => {
             this.invalid_grant = false
-            console.log(res)
         })
     }
 
