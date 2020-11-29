@@ -3,6 +3,7 @@ export const environment = {
     oauth: { 
         client_id: 'CLIENT_ID', 
         client_secret: 'CLIENT_SECRET', 
-        url: 'URL' 
+        api_url: 'API_URL',
+        web_url: 'WEB_URL'
     }
 }

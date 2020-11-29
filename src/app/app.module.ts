@@ -10,6 +10,9 @@ import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
 import { RegisterComponent } from './pages/register/register.component'
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import { SuperService } from './shared/interceptors/super.service'
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -23,7 +26,13 @@ import { RegisterComponent } from './pages/register/register.component'
         PassportModule.forRoot(environment.oauth),
         AppRoutingModule
     ],
-    providers: [],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS, 
+            useClass: SuperService, 
+            multi: true 
+        }
+    ],
     bootstrap: [AppComponent]
 })
 
