@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { confirmed } from 'src/app/shared/validators/confirmed'
 
+import { OauthService } from '@federico1818/passport'
+
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
@@ -11,14 +13,15 @@ export class RegisterComponent implements OnInit {
     public form = this.fb.group({
         name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8)]],
-        password_confirmation: ['', [Validators.required, Validators.minLength(8)]]
+        password: ['', [Validators.required, Validators.minLength(4)]],
+        password_confirmation: ['', [Validators.required, Validators.minLength(4)]]
     }, {
         validator: confirmed('password')
     })
 
     constructor(
-        protected fb: FormBuilder
+        protected fb: FormBuilder,
+        protected oauthService: OauthService
     ) {}
 
     ngOnInit(): void {
@@ -30,7 +33,9 @@ export class RegisterComponent implements OnInit {
     }
     
     protected register(): void {
-        console.log(this.form)   
+        this.oauthService.register(this.form.value).subscribe((res: any) => {
+            console.log(res)
+        })
     }
 
 }
