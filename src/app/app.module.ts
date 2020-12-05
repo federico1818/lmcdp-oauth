@@ -8,29 +8,30 @@ import { environment } from 'src/environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
-import { RegisterComponent } from './pages/register/register.component'
+import { RegisterModule } from 'src/app/register/register.module'
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { SuperService } from './shared/interceptors/super.service'
+import { SuperService } from 'src/app/shared/interceptors/super.service'
+
 
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
-        RegisterComponent
+        LoginComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         PassportModule.forRoot(environment.oauth),
-        AppRoutingModule
+        AppRoutingModule,
+        RegisterModule
     ],
     providers: [
         {
             provide: HTTP_INTERCEPTORS, 
             useClass: SuperService, 
-            multi: true 
+            multi: true
         }
     ],
     bootstrap: [AppComponent]
