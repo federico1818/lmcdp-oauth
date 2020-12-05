@@ -29,7 +29,7 @@
             <span *ngIf="form.controls.password.hasError('required')">
                 La contraseña es obligatoria.
             </span>
-            <span *ngIf="form.controls.email.hasError('email')">
+            <span *ngIf="form.controls.password.hasError('minlength')">
                 Debe tener 8 caracteres como mínimos.
             </span>
         </div>
