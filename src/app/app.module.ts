@@ -10,14 +10,14 @@ import { AppComponent } from './app.component'
 import { LoginComponent } from './pages/login/login.component'
 import { RegisterModule } from 'src/app/register/register.module'
 
-import { HTTP_INTERCEPTORS } from '@angular/common/http'
-import { SuperService } from 'src/app/shared/interceptors/super.service'
+import { AlertComponent } from './shared/components/alert/alert.component'
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        AlertComponent
     ],
     imports: [
         BrowserModule,
@@ -27,14 +27,12 @@ import { SuperService } from 'src/app/shared/interceptors/super.service'
         AppRoutingModule,
         RegisterModule
     ],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS, 
-            useClass: SuperService, 
-            multi: true
-        }
+    entryComponents: [
+        AlertComponent
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 
 export class AppModule { }
