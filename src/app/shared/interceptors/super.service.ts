@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http'
 import { Observable } from 'rxjs'
+import { catchError, map, tap } from 'rxjs/operators'
 
 @Injectable()
 export class SuperService implements HttpInterceptor {
@@ -9,7 +10,15 @@ export class SuperService implements HttpInterceptor {
         const headers = req.clone({
             headers: req.headers.set('Accept', 'application/json')
         })
-        return next.handle(req)
+        return next.handle(req).pipe(
+            tap(event => {
+                if(event instanceof HttpResponse) {
+                    console.log(event)
+                }
+            }, error => {
+                console.log(error)
+            })
+        )
         //return next.handle(headers);
     }
 
