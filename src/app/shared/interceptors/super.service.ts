@@ -21,8 +21,12 @@ export class SuperService implements HttpInterceptor {
                 if(event instanceof HttpResponse) {
                     console.log(event)
                 }
-            }, error => {
-                this.alertService.open(error.error.message)
+            }, err => {
+                let message = err.error.message
+                if(err.status == 422) {
+                    message = err.error.errors[Object.keys(err.error.errors)[0]][0]
+                }
+                this.alertService.open(message)
             })
         )
         //return next.handle(headers);

@@ -1,16 +1,16 @@
 <form  [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div>
+    <div class="input-group">
         <input type="text" formControlName="name" placeholder="Nombre">
-        <div *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)">
+        <div class="input-error" *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)">
             <span *ngIf="form.controls.name.hasError('required')">
                 El nombre es obligatorio.
             </span>
         </div>
     </div>
     
-    <div>
+    <div class="input-group">
         <input type="email" formControlName="email" placeholder="Email">
-        <div *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
+        <div class="input-error" *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
             <span *ngIf="form.controls.email.hasError('required')">
                 La dirección de email es obligatoria.
             </span>
@@ -20,21 +20,21 @@
         </div>
     </div>
     
-    <div>
+    <div class="input-group">
         <input type="password" formControlName="password" placeholder="Contraseña">
-        <div *ngIf="form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)">
+        <div class="input-error" *ngIf="form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)">
             <span *ngIf="form.controls.password.hasError('required')">
                 La contraseña es obligatoria.
             </span>
             <span *ngIf="form.controls.password.hasError('minlength')">
-                Debe tener 8 caracteres como mínimos.
+                Debe tener 4 caracteres como mínimos.
             </span>
         </div>
     </div>
     
-    <div>
+    <div class="input-group">
         <input type="password" formControlName="password_confirmation" placeholder="Confirmar contraseña">
-        <div *ngIf="form.controls.password_confirmation.invalid && (form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched)">
+        <div class="input-error" *ngIf="form.controls.password_confirmation.invalid && (form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched)">
             <span *ngIf="form.controls.password_confirmation.hasError('required')">
                 Confirmar la contraseña es obligatorio.
             </span>
