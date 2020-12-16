@@ -8,6 +8,7 @@
     --card-title-bg-color: #110E2B;
     --card-title-color: #ffffff;
     --card-content-bg-color: #d1cfda;
+    --alert-bg-color: #dedede;
     --padding-sm: 8px;
     --padding-md: 16px;
     --padding-lg: 24px;
@@ -46,9 +47,10 @@ button {
     background-color: var(--button-bg-color);
     color: var(--button-color);
     cursor: pointer;
+    font-weight: bold;
     padding: var(--padding-md);
     width: 100%;
-    transition: background-color .6s, color .6s;
+    transition: background-color .4s, color .4s;
 }
 
 button:hover {
@@ -70,4 +72,38 @@ button:hover {
 
 .input-group {
     margin-bottom: var(--margin-md);
+}
+
+/* ALERT */
+
+.alert-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.alert-container::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.alert {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    margin: 0 var(--margin-md);
+    padding: var(--padding-md);
+    background-color: var(--alert-bg-color);
+    border-radius: var(--border-radius-md);
+}
+
+.alert-message {
+    padding: var(--padding-md) var(--padding-sm);
+    text-align: center;
 }
