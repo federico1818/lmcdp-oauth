@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-    --primary: #1d0f4a;
+    --bg-color: #1d0f4a;
     --button-color: #000000;
     --button-bg-color: #CACACA;
-    --button-hover-color: #00ac97;
-    --button-hover-bg-color: #fefefe;
+    --button-active-initial-color: #00ac97;
+    --button-active-initial-bg-color: hsl(0 0% 90% / 1);;
+    --button-active-final-color: #00ac97;
+    --button-active-final-bg-color: #fefefe;
     --card-title-bg-color: #110E2B;
     --card-title-color: #ffffff;
     --card-content-bg-color: #d1cfda;
@@ -19,6 +21,13 @@
     --margin-xl: 32px;
     --border-radius-sm: 8px;
     --border-radius-md: 16px;
+    --height-md: 40px;
+    --height-lg: 48px;
+    --font-size-sm: 13px;
+    --font-size-md: 16px;
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: 'Lato', sans-serif;
+    --font-family-title: 'Rubik', sans-serif;
 }
 
 * {
@@ -26,9 +35,10 @@
 }
 
 body {
-    background-color: var(--primary);
+    background-color: var(--bg-color);
     margin: 0;
     padding: 0 var(--padding-md);
+    font-family: var(--font-family-primary);
 }
 
 h2 {
@@ -37,7 +47,8 @@ h2 {
 
 input {
     border: 0;
-    padding: var(--padding-sm);
+    padding: 0 var(--padding-md);
+    height: var(--height-md);
     width: 100%;
 }
 
@@ -48,19 +59,28 @@ button {
     color: var(--button-color);
     cursor: pointer;
     font-weight: bold;
-    padding: var(--padding-md);
+    font-family: var(--font-family-secondary);
+    font-size: 18px;
+    height: var(--height-lg);
+    padding: 0;
     width: 100%;
-    transition: background-color .4s, color .4s;
+    transition: background-color .4s, color .2s;
+}
+
+input:focus,
+button:focus {
+    outline: 0;
 }
 
 button:hover {
-    background-color: var(--button-hover-bg-color);
-    color: var(--button-hover-color);
+    background-color: var(--button-active-final-bg-color);
+    color: var(--button-active-final-color);
 }
 
 .card-title {
     background-color: var(--card-title-bg-color);
     color: var(--card-title-color);
+    font-family: var(--font-family-title);
     padding: var(--padding-sm) 0;
     text-align: center;
 }
@@ -72,6 +92,10 @@ button:hover {
 
 .input-group {
     margin-bottom: var(--margin-md);
+}
+
+.input-error {
+    font-size: var(--font-size-sm);
 }
 
 /* ALERT */
@@ -104,6 +128,22 @@ button:hover {
 }
 
 .alert-message {
-    padding: var(--padding-md) var(--padding-sm);
+    font-family: var(--font-family-secondary);
+    padding: var(--padding-md) var(--padding-sm) var(--padding-lg);
     text-align: center;
+}
+
+button.clickable {
+    animation: clickable 1.2s infinite alternate-reverse;
+}
+
+@keyframes clickable {
+    from {
+        background-color: var(--button-active-initial-bg-color);
+        color: var(--button-active-initial-color);
+    }
+    to {
+        background-color: var(--button-active-final-bg-color);
+        color: var(--button-active-final-color);
+    }
 }

@@ -1,7 +1,5 @@
 import { Component } from '@angular/core'
 
-import { AlertService } from './shared/services/alert.service'
-
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -9,13 +7,5 @@ import { AlertService } from './shared/services/alert.service'
 })
 
 export class AppComponent {
-
-    constructor(
-        protected alertService: AlertService
-    ) {}
-
-    public open(): void {
-        this.alertService.open('Message')
-    }
 
 }
