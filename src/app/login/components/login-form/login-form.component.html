@@ -1,1 +1,32 @@
-<p>login-form works!</p>
+<form  [formGroup]="form" (ngSubmit)="onSubmit()">
+            
+    <div class="input-group">
+        <input type="email" formControlName="email" placeholder="Email">
+        <div *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
+            <span *ngIf="form.controls.email.hasError('required')">
+                El email es obligatorio.
+            </span>
+            <span *ngIf="form.controls.email.hasError('email')">
+                Debe ser un email válido.
+            </span>
+        </div>
+    </div>
+    
+    <div class="input-group">
+        <input type="password" formControlName="password" placeholder="Contraseña">
+        <div *ngIf="form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)">
+            <span *ngIf="form.controls.password.hasError('required')">
+                La contraseña es obligatoria.
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="invalid_grant">
+        Email o contraseña incorrecta
+    </div>
+
+    <div>
+        <button type="submit">Ingresar</button>
+    </div>
+    
+</form>

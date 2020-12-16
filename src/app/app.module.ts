@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { PassportModule } from '@federico1818/passport'
 import { environment } from 'src/environments/environment'
@@ -20,8 +19,6 @@ import { AlertComponent } from './shared/components/alert/alert.component'
     ],
     imports: [
         BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
         PassportModule.forRoot(environment.oauth),
         AppRoutingModule,
         LoginModule,

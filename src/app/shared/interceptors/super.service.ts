@@ -7,16 +7,17 @@ import { catchError, map, tap } from 'rxjs/operators'
 export class SuperService implements HttpInterceptor {
     
     public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const headers = req.clone({
+        /* const headers = req.clone({
             headers: req.headers.set('Accept', 'application/json')
-        })
+        }) */
         return next.handle(req).pipe(
             tap(event => {
                 if(event instanceof HttpResponse) {
+                    console.error('error')
                     console.log(event)
                 }
             }, error => {
-                console.log(error)
+                console.error('error')
             })
         )
         //return next.handle(headers);
