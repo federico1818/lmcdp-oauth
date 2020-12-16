@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { HttpErrorResponse } from '@angular/common/http'
 
-import { OauthService, Credentials } from '@federico1818/passport'
+import { OauthService } from '@federico1818/passport'
 import { throwError } from 'rxjs'
 import { catchError } from 'rxjs/operators'
 
@@ -11,7 +11,9 @@ import { catchError } from 'rxjs/operators'
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent {
+
     public invalid_grant: boolean = false 
 
     public form = this.fb.group({
@@ -42,4 +44,5 @@ export class LoginComponent {
                 this.invalid_grant = true
         return throwError(error.error)
     }
+
 }

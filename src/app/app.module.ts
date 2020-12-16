@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { LoginComponent } from './pages/login/login.component'
+import { LoginModule } from 'src/app/login/login.module'
 import { RegisterModule } from 'src/app/register/register.module'
 
 import { AlertComponent } from './shared/components/alert/alert.component'
@@ -16,7 +16,6 @@ import { AlertComponent } from './shared/components/alert/alert.component'
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
         AlertComponent
     ],
     imports: [
@@ -25,6 +24,7 @@ import { AlertComponent } from './shared/components/alert/alert.component'
         ReactiveFormsModule,
         PassportModule.forRoot(environment.oauth),
         AppRoutingModule,
+        LoginModule,
         RegisterModule
     ],
     entryComponents: [

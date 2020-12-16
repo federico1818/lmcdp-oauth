@@ -4,7 +4,8 @@
     </div>
     <div class="card-content">
         <form  [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div>
+            
+            <div class="input-group">
                 <input type="email" formControlName="email" placeholder="Email">
                 <div *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
                     <span *ngIf="form.controls.email.hasError('required')">
@@ -16,7 +17,7 @@
                 </div>
             </div>
             
-            <div>
+            <div class="input-group">
                 <input type="password" formControlName="password" placeholder="Contraseña">
                 <div *ngIf="form.controls.password.invalid && (form.controls.password.dirty || form.controls.password.touched)">
                     <span *ngIf="form.controls.password.hasError('required')">
