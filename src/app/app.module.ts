@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { LoginModule } from 'src/app/login/login.module'
 import { RegisterModule } from 'src/app/register/register.module'
+import { PasswordModule } from 'src/app/password/password.module'
 
 import { AlertComponent } from './shared/components/alert/alert.component'
 import { SuperService } from './shared/interceptors/super.service'
@@ -24,7 +25,8 @@ import { SuperService } from './shared/interceptors/super.service'
         PassportModule.forRoot(environment.oauth),
         AppRoutingModule,
         LoginModule,
-        RegisterModule
+        RegisterModule,
+        PasswordModule
     ],
     providers: [
         {
