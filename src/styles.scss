@@ -10,6 +10,8 @@
     --button-active-final-bg-color: #fefefe;
     --card-title-bg-color: #110E2B;
     --card-title-color: #ffffff;
+    --card-description-bg-color: #2e2b58;
+    --card-description-color: #ffffff;
     --card-content-bg-color: #d1cfda;
     --alert-bg-color: #dedede;
     --padding-sm: 8px;
@@ -89,6 +91,14 @@ button:hover {
 .card-content {
     background-color: var(--card-content-bg-color);
     padding: var(--padding-lg);
+}
+
+.card-description {
+    background-color: var(--card-description-bg-color);
+    color: var(--card-description-color);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    padding: var(--padding-md);
 }
 
 .input-group {
