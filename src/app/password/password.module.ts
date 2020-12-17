@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { PasswordRoutingModule } from './password-routing.module';
 import { PasswordComponent } from './pages/password/password.component';
@@ -7,9 +8,14 @@ import { PasswordEmailFormComponent } from './components/password-email-form/pas
 
 
 @NgModule({
-    declarations: [PasswordComponent, PasswordEmailFormComponent],
+    declarations: [
+        PasswordComponent,
+        PasswordEmailFormComponent
+    ],
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         PasswordRoutingModule
     ]
 })
