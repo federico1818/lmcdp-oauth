@@ -12,10 +12,10 @@
         <input type="email" formControlName="email" placeholder="Email">
         <div class="input-error" *ngIf="form.controls.email.invalid && (form.controls.email.dirty || form.controls.email.touched)">
             <span *ngIf="form.controls.email.hasError('required')">
-                La dirección de email es obligatoria.
+                El email es obligatorio.
             </span>
             <span *ngIf="form.controls.email.hasError('email')">
-                Debe ser una dirección de email válida.
+                Debe ser un email válido.
             </span>
         </div>
     </div>

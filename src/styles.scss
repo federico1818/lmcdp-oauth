@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
     --bg-color: #1d0f4a;
+    --error-color: #ac001d;
     --button-color: #000000;
     --button-bg-color: #CACACA;
-    --button-active-initial-color: #00ac97;
+    --button-active-initial-color: #00ac98;
     --button-active-initial-bg-color: hsl(0 0% 90% / 1);;
-    --button-active-final-color: #00ac97;
+    --button-active-final-color: #00ac98;
     --button-active-final-bg-color: #fefefe;
     --card-title-bg-color: #110E2B;
     --card-title-color: #ffffff;
@@ -91,11 +92,12 @@ button:hover {
 }
 
 .input-group {
-    margin-bottom: var(--margin-md);
+    margin-bottom: var(--margin-sm);
 }
 
 .input-error {
     font-size: var(--font-size-sm);
+    color: var(--error-color);
 }
 
 /* ALERT */
@@ -135,6 +137,39 @@ button:hover {
 
 button.clickable {
     animation: clickable 1.2s infinite alternate-reverse;
+}
+
+.bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.bg-img {
+    position: absolute;
+    width: 50%;
+}
+
+.bg-top {
+    top: 0;
+    left: 0;
+}
+
+.bg-bottom {
+    bottom: 0;
+    right: 0;
+}
+
+router-outlet + * {
+    display: grid;
+    height: 100vh;
+}
+
+router-outlet + * {
+    align-items: center;
 }
 
 @keyframes clickable {
