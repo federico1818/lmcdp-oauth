@@ -5,14 +5,18 @@
     --button-color: #000000;
     --button-bg-color: #CACACA;
     --button-active-initial-color: #00ac98;
-    --button-active-initial-bg-color: hsl(0 0% 90% / 1);;
+    --button-active-initial-bg-color: #d5d5d5;
     --button-active-final-color: #00ac98;
     --button-active-final-bg-color: #fefefe;
+    --button-action-bg-color: #c6c6c6;
+    --button-action-color: #0e0e0e;
     --card-title-bg-color: #110E2B;
     --card-title-color: #ffffff;
     --card-description-bg-color: #2e2b58;
     --card-description-color: #ffffff;
     --card-content-bg-color: #d1cfda;
+    --card-info-content-bg-color: #333;
+    --card-info-content-color: #fff;
     --alert-bg-color: #dedede;
     --padding-sm: 8px;
     --padding-md: 16px;
@@ -36,6 +40,11 @@
 
 * {
     box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 body {
@@ -81,6 +90,10 @@ button:hover {
     color: var(--button-active-final-color);
 }
 
+button.clickable {
+    animation: clickable 1.2s infinite alternate-reverse;
+}
+
 .card {
     margin: 0 auto;
     max-width: 512px;
@@ -106,6 +119,26 @@ button:hover {
     font-size: var(--font-size-sm);
     text-align: center;
     padding: var(--padding-md);
+}
+
+.card-info .card-content {
+    background-color: var(--card-info-content-bg-color);
+    color: var(--card-info-content-color);
+    font-family: var(--font-family-secondary);
+}
+
+.card-info .card-actions a {
+    height: var(--height-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-action-bg-color);
+    color: var(--button-action-color);
+    font-weight: bold;
+}
+
+.card-info .card-actions a.clickable {
+    animation: clickable 1.2s infinite alternate-reverse;
 }
 
 .input-group {
@@ -152,10 +185,6 @@ button:hover {
     font-family: var(--font-family-secondary);
     padding: var(--padding-md) var(--padding-sm) var(--padding-lg);
     text-align: center;
-}
-
-button.clickable {
-    animation: clickable 1.2s infinite alternate-reverse;
 }
 
 .bg {

@@ -1,7 +1,5 @@
-import { Component } from '@angular/core'
+import { Component, Output, EventEmitter } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
-import { UiService } from '@federico1818/passport'
-import { AlertService } from 'src/app/shared/services/alert.service'
 
 @Component({
     selector: 'app-password-email-form',
@@ -10,15 +8,14 @@ import { AlertService } from 'src/app/shared/services/alert.service'
 })
 
 export class PasswordEmailFormComponent {
-
+    @Output() submitted: EventEmitter<any> = new EventEmitter<any>()
+    
     public form = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
     })
 
     constructor(
-        protected fb: FormBuilder,
-        protected uiService: UiService,
-        protected alertService: AlertService
+        protected fb: FormBuilder
     ) {}
     
     public onSubmit(): void {
@@ -27,10 +24,6 @@ export class PasswordEmailFormComponent {
     }
 
     protected send(): void {
-        this.uiService.sendResetLinkEmail(this.form.value, '/api/password/email').subscribe((res) => {
-            this.alertService.open(res.message).subscribe(() => {
-                this.form.reset()
-            })
-        })
+        this.submitted.emit(this.form.value)
     }
 }
