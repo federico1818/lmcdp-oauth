@@ -18,21 +18,19 @@
     --card-info-content-bg-color: #333;
     --card-info-content-color: #fff;
     --alert-bg-color: #dedede;
-    --padding-sm: 8px;
-    --padding-md: 16px;
-    --padding-lg: 24px;
-    --padding-xl: 32px;
-    --margin-xs: 4px;
-    --margin-sm: 8px;
-    --margin-md: 16px;
-    --margin-lg: 24px;
-    --margin-xl: 32px;
-    --border-radius-sm: 8px;
-    --border-radius-md: 16px;
+    --action-bar-color: #ffffff;
+    --action-bar-icon-border-color: #7c7380;
+    --action-bar-icon-bg-color: #31302c;
     --height-md: 40px;
     --height-lg: 48px;
-    --font-size-sm: 13px;
+    --font-size-xs: 13px;
+    --font-size-sm: 14px;
     --font-size-md: 16px;
+    --length-xs: 4px;
+    --length-sm: 8px;
+    --length-md: 16px;
+    --length-lg: 24px;
+    --length-xl: 32px;
     --font-family-primary: 'Open Sans', sans-serif;
     --font-family-secondary: 'Lato', sans-serif;
     --font-family-title: 'Rubik', sans-serif;
@@ -50,7 +48,7 @@ a {
 body {
     background-color: var(--bg-color);
     margin: 0;
-    padding: 0 var(--padding-md);
+    padding: 0;
     font-family: var(--font-family-primary);
 }
 
@@ -60,14 +58,14 @@ h2 {
 
 input {
     border: 0;
-    padding: 0 var(--padding-md);
+    padding: 0 var(--length-md);
     height: var(--height-md);
     width: 100%;
 }
 
 button {
     border: 0;
-    border-radius: var(--border-radius-md);
+    border-radius: var(--length-md);
     background-color: var(--button-bg-color);
     color: var(--button-color);
     cursor: pointer;
@@ -94,6 +92,14 @@ button.clickable {
     animation: clickable 1.2s infinite alternate-reverse;
 }
 
+.app {
+    display: block;
+    max-width: 1024px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 var(--length-sm);
+}
+
 .card {
     margin: 0 auto;
     max-width: 512px;
@@ -104,13 +110,13 @@ button.clickable {
     background-color: var(--card-title-bg-color);
     color: var(--card-title-color);
     font-family: var(--font-family-title);
-    padding: var(--padding-sm) 0;
+    padding: var(--length-sm) 0;
     text-align: center;
 }
 
 .card-content {
     background-color: var(--card-content-bg-color);
-    padding: var(--padding-lg);
+    padding: var(--length-lg);
 }
 
 .card-description {
@@ -118,7 +124,7 @@ button.clickable {
     color: var(--card-description-color);
     font-size: var(--font-size-sm);
     text-align: center;
-    padding: var(--padding-md);
+    padding: var(--length-md);
 }
 
 .card-info .card-content {
@@ -142,12 +148,12 @@ button.clickable {
 }
 
 .input-group {
-    margin-bottom: var(--margin-sm);
+    margin-bottom: var(--length-sm);
 }
 
 .input-error {
-    margin-top: var(--margin-xs);
-    font-size: var(--font-size-sm);
+    margin-top: var(--length-xs);
+    font-size: var(--font-size-xs);
     color: var(--error-color);
 }
 
@@ -175,15 +181,16 @@ button.clickable {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    margin: 0 var(--margin-md);
-    padding: var(--padding-md);
+    margin: 0 var(--length-md);
+    padding: var(--length-md);
     background-color: var(--alert-bg-color);
-    border-radius: var(--border-radius-md);
+    border-radius: var(--length-md);
+    max-width: 512px;
 }
 
 .alert-message {
     font-family: var(--font-family-secondary);
-    padding: var(--padding-md) var(--padding-sm) var(--padding-lg);
+    padding: var(--length-md) var(--length-sm) var(--length-lg);
     text-align: center;
 }
 
@@ -260,4 +267,25 @@ router-outlet + * {
         background-color: var(--button-active-final-bg-color);
         color: var(--button-active-final-color);
     }
+}
+
+.action-bar {
+    position: absolute;
+    bottom: 16px;
+    color: #fff;
+    font-size: 14px;
+    font-family: var(--font-family-secondary);
+    left: 16px;
+}
+
+.action-bar .icon {
+    border: 1px solid var(--action-bar-icon-border-color);
+    background-color: var(--action-bar-icon-bg-color);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--length-xs);
 }
