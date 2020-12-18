@@ -1,5 +1,5 @@
 import { ApplicationRef, ComponentFactoryResolver, ComponentRef, EmbeddedViewRef, Injectable, Injector } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Observable, Subscription } from 'rxjs'
 import { AlertComponent } from '../components/alert/alert.component'
 
 @Injectable({
@@ -16,14 +16,15 @@ export class AlertService {
         private injector: Injector
     ) {}
 
-    public open(message: string): void {
+    public open(message: string): Observable<null> {
         this.close()
         this.componentRef = this.appendComponentToBody()
         this.componentRef.instance.message = message
         this.subscriptionAfterClosed = this.componentRef.instance.afterClosed.subscribe((value) => {
             this.close()
             this.subscriptionAfterClosed?.unsubscribe()
-        }) 
+        })
+        return this.componentRef.instance.afterClosed
     }
 
     public close(): void {

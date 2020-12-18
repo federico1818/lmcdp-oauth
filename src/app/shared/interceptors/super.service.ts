@@ -13,16 +13,19 @@ export class SuperService implements HttpInterceptor {
     ) {}
     
     public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        /* const headers = req.clone({
+        const headers = req.clone({
             headers: req.headers.set('Accept', 'application/json')
-        }) */
-        return next.handle(req).pipe(
+        })
+        return next.handle(headers).pipe(
             tap(event => {
                 if(event instanceof HttpResponse) {
                     console.log(event)
                 }
             }, err => {
                 let message = err.error.message
+                if(err.status == 0) {
+                    message = 'No es posible conectarse al servidor en estos momentos.'
+                }
                 if(err.status == 422) {
                     message = err.error.errors[Object.keys(err.error.errors)[0]][0]
                 }

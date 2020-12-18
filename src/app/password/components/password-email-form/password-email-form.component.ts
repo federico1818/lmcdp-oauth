@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
-import { OauthService } from '@federico1818/passport'
+import { UiService } from '@federico1818/passport'
+import { AlertService } from 'src/app/shared/services/alert.service'
 
 @Component({
     selector: 'app-password-email-form',
@@ -16,7 +17,8 @@ export class PasswordEmailFormComponent {
 
     constructor(
         protected fb: FormBuilder,
-        protected oauthService: OauthService
+        protected uiService: UiService,
+        protected alertService: AlertService
     ) {}
     
     public onSubmit(): void {
@@ -25,6 +27,10 @@ export class PasswordEmailFormComponent {
     }
 
     protected send(): void {
-        
+        this.uiService.sendResetLinkEmail(this.form.value, '/api/password/email').subscribe((res) => {
+            this.alertService.open(res.message).subscribe(() => {
+                this.form.reset()
+            })
+        })
     }
 }
