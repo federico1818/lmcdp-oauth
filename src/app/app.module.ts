@@ -12,13 +12,15 @@ import { RegisterModule } from 'src/app/register/register.module'
 import { PasswordModule } from 'src/app/password/password.module'
 
 import { AlertComponent } from './shared/components/alert/alert.component'
-import { SuperService } from './shared/interceptors/super.service'
+import { SuperService } from './shared/interceptors/super.service';
+import { MessageComponent } from './shared/components/message/message.component'
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        AlertComponent
+        AlertComponent,
+        MessageComponent
     ],
     imports: [
         BrowserModule,
