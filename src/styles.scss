@@ -294,14 +294,20 @@ router-outlet + * {
     left: 16px;
 }
 
-.action-bar .icon {
+.action-bar a {
+    display: flex;
+    align-items: center;
+}
+
+.action-bar .material-icons {
     border: 1px solid var(--action-bar-icon-border-color);
     background-color: var(--action-bar-icon-bg-color);
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-right: var(--length-xs);
+    margin-right: var(--length-sm);
+    font-size: var(--font-size-xs);
 }
