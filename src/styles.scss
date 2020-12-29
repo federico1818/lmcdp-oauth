@@ -190,7 +190,7 @@ button.clickable {
 }
 
 .overlay {
-    padding: var(--length-md);
+    padding: var(--length-xl) var(--length-md);
     background-color: var(--alert-bg-color);
     border-radius: var(--length-md);
     max-width: 512px;

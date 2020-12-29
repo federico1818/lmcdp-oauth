@@ -4,13 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { PasswordRoutingModule } from './password-routing.module';
 import { PasswordComponent } from './pages/password/password.component';
-import { PasswordEmailFormComponent } from './components/password-email-form/password-email-form.component'
+import { PasswordEmailFormComponent } from './components/password-email-form/password-email-form.component';
+import { ResetComponent } from './pages/reset/reset.component';
+import { PasswordResetFormComponent } from './components/password-reset-form/password-reset-form.component'
 
 
 @NgModule({
     declarations: [
         PasswordComponent,
-        PasswordEmailFormComponent
+        PasswordEmailFormComponent,
+        ResetComponent,
+        PasswordResetFormComponent
     ],
     imports: [
         CommonModule,
