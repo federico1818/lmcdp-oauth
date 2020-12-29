@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { OauthService } from '@federico1818/passport'
 import { confirmed } from 'src/app/shared/validators/confirmed'

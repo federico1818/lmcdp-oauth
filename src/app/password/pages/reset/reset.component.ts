@@ -9,17 +9,25 @@ import { ActivatedRoute } from '@angular/router'
 
 export class ResetComponent implements OnInit {
     public sent: boolean = false
+    public params: any
 
     constructor(
         protected route: ActivatedRoute
     ) {}
 
-    ngOnInit(): void {
-        console.log(this.route.snapshot.paramMap.get('token'))
+    public ngOnInit(): void {
+        this.readParamsFromActivatedRoute()
     }
-
+    
     public onSubmit(form: any): void {
         console.log(form)
+    }
+    
+    private readParamsFromActivatedRoute(): void {
+        this.params = {
+            token: this.route.snapshot.paramMap.get('token'),
+            email: this.route.snapshot.paramMap.get('email')
+        }
     }
 
 }

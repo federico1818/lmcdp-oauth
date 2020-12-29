@@ -6,6 +6,6 @@
         Ingresa tu nueva contraseña.
     </div>
     <div class="card-content">
-        <app-password-reset-form (submitted)="onSubmit($event)"></app-password-reset-form>
+        <app-password-reset-form (submitted)="onSubmit($event)" [data]="params"></app-password-reset-form>
     </div>
 </div>
