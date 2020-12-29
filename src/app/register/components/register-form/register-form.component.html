@@ -34,7 +34,7 @@
     
     <div class="input-group">
         <input type="password" formControlName="password_confirmation" placeholder="Confirmar contraseña">
-        <div class="input-error" *ngIf="form.controls.password_confirmation.invalid && (form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched)">
+        <div class="input-error" *ngIf="(form.controls.password_confirmation.invalid || form.hasError('confirmed')) && (form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched)">
             <span *ngIf="form.controls.password_confirmation.hasError('required')">
                 Confirmar la contraseña es obligatorio.
             </span>
