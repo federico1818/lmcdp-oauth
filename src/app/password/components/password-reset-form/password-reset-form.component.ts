@@ -23,6 +23,6 @@ export class PasswordResetFormComponent extends FormComponent implements OnInit 
     })
 
     public ngOnInit(): void {
-        this.form.patchValue(this.data)
+        this.form.patchValue(this.data?? {})
     }
 }
