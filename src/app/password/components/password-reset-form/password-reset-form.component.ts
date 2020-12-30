@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { Validators } from '@angular/forms'
 import { FormComponent } from '@federico1818/utils'
 
@@ -10,7 +10,7 @@ import { confirmed } from 'src/app/shared/validators/confirmed'
     styleUrls: ['./password-reset-form.component.scss']
 })
 
-export class PasswordResetFormComponent extends FormComponent implements OnInit {
+export class PasswordResetFormComponent extends FormComponent {
     @Input() data: any
     
     public form = this.fb.group({
@@ -21,8 +21,4 @@ export class PasswordResetFormComponent extends FormComponent implements OnInit 
     }, {
         validator: confirmed('password')
     })
-
-    public ngOnInit(): void {
-        this.form.patchValue(this.data?? {})
-    }
 }
