@@ -1,5 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core'
-import { FormBuilder, Validators } from '@angular/forms'
+import { Component } from '@angular/core'
+import { Validators } from '@angular/forms'
+import { FormComponent } from '@federico1818/utils'
 
 @Component({
     selector: 'app-password-email-form',
@@ -7,23 +8,8 @@ import { FormBuilder, Validators } from '@angular/forms'
     styleUrls: ['./password-email-form.component.scss']
 })
 
-export class PasswordEmailFormComponent {
-    @Output() submitted: EventEmitter<any> = new EventEmitter<any>()
-    
+export class PasswordEmailFormComponent extends FormComponent {
     public form = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
     })
-
-    constructor(
-        protected fb: FormBuilder
-    ) {}
-    
-    public onSubmit(): void {
-        if(this.form.valid)
-            this.send()
-    }
-
-    protected send(): void {
-        this.submitted.emit(this.form.value)
-    }
 }
