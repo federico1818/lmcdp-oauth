@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" *ngIf="!created">
     <div class="card-title">
         <h2>Crear una cuenta</h2>
     </div>
@@ -6,6 +6,19 @@
         Únete a la mejor comunidad.
     </div>
     <div class="card-content">
-        <app-register-form></app-register-form>
+        <app-register-form (submitted)="onSubmit($event)"></app-register-form>
+    </div>
+</div>
+
+<div class="card" *ngIf="created">
+    <div class="card-title">
+        <h2>Confirmar email</h2>
+    </div>
+    <div class="card-description">
+        Sólo falta un paso para completar el registro.
+    </div>
+    <div class="card-content">
+        Te hemos enviado un email para que verifiques tu cuenta. <br>
+        Si no ves el correo en la bandeja de entrada verfica en la carpeta de spam.
     </div>
 </div>

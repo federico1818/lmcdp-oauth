@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
 import { OauthService } from '@federico1818/passport'
-import { catchError } from 'rxjs/operators'
 
 @Component({
     selector: 'app-login',

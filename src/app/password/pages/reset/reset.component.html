@@ -9,3 +9,15 @@
         <app-password-reset-form (submitted)="onSubmit($event)" [data]="params"></app-password-reset-form>
     </div>
 </div>
+
+<div class="card card-info" *ngIf="sent">
+    <div class="card-title">
+        <h2>Reestablecer contraseña</h2>
+    </div>
+    <div class="card-content">
+        Contraseña cambiada con éxito
+    </div>
+    <div class="card-actions">
+        <a class="clickable" [routerLink]="['/']">Ir al home</a>
+    </div>
+</div>

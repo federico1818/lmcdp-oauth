@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { OauthService } from '@federico1818/passport'
+import { FormComponent } from '@federico1818/utils'
 import { confirmed } from 'src/app/shared/validators/confirmed'
 
 @Component({
@@ -9,7 +10,7 @@ import { confirmed } from 'src/app/shared/validators/confirmed'
     styleUrls: ['./register-form.component.scss']
 })
 
-export class RegisterFormComponent {
+export class RegisterFormComponent extends FormComponent {
 
     public form = this.fb.group({
         name: ['', [Validators.required]],
@@ -19,21 +20,5 @@ export class RegisterFormComponent {
     }, {
         validator: confirmed('password')
     })
-
-    constructor(
-        protected fb: FormBuilder,
-        protected oauthService: OauthService
-    ) {}
-
-    public onSubmit(): void {
-        if(this.form.valid)
-            this.register()
-    }
-    
-    protected register(): void {
-        this.oauthService.register(this.form.value).subscribe((res: any) => {
-            console.log(res)
-        })
-    }
 
 }

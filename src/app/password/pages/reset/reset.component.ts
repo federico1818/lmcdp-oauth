@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
+import { UiService } from '@federico1818/passport'
 
 @Component({
     selector: 'app-reset',
@@ -12,7 +13,8 @@ export class ResetComponent implements OnInit {
     public params: any
 
     constructor(
-        protected route: ActivatedRoute
+        protected route: ActivatedRoute,
+        protected uiService: UiService
     ) {}
 
     public ngOnInit(): void {
@@ -20,7 +22,9 @@ export class ResetComponent implements OnInit {
     }
     
     public onSubmit(form: any): void {
-        console.log(form)
+        this.uiService.resetPassword(form, '/api/password/reset').subscribe(res => {
+            console.log(res)
+        })
     }
     
     private readParamsFromActivatedRoute(): void {

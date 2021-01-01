@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { OauthService } from '@federico1818/passport'
 
 @Component({
@@ -7,13 +7,21 @@ import { OauthService } from '@federico1818/passport'
     styleUrls: ['./register.component.scss']
 })
 
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
+    public created: boolean = false
 
     constructor(
         protected oauthService: OauthService
     ) {}
 
-    ngOnInit(): void {
+    public onSubmit(form: any): void {
+        this.register(form)
+    }
+
+    protected register(form: any): void {
+        this.oauthService.register(form, '/api/register').subscribe((res: any) => {
+            this.created = true
+        })
     }
 
 }
