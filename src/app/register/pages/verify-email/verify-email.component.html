@@ -1,0 +1,24 @@
+<div class="card" *ngIf="!sent">
+    <div class="card-title">
+        <h2>Verificar email</h2>
+    </div>
+    <div class="card-description">
+        Verificando su dirección de correo electrónico...
+    </div>
+    <div class="card-content">
+        Aguarde unos instantes y por favor, no cierre el navegador.
+        <app-verify-email-form (submitted)="onSubmit($event)" [data]="params"></app-verify-email-form>
+    </div>
+</div>
+
+<div class="card card-info" *ngIf="sent">
+    <div class="card-title">
+        <h2>Verificado email</h2>
+    </div>
+    <div class="card-content">
+        {{ message }}
+    </div>
+    <div class="card-actions">
+        <a class="clickable" [routerLink]="['/']">Ir al home</a>
+    </div>
+</div>

@@ -22,7 +22,7 @@ export class ResetComponent implements OnInit {
     }
     
     public onSubmit(form: any): void {
-        this.uiService.resetPassword(form, '/api/password/reset').subscribe(res => {
+        this.uiService.resetPassword(form).subscribe(res => {
             console.log(res)
         })
     }

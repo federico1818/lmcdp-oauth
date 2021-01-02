@@ -16,7 +16,7 @@ export class PasswordComponent {
     ) {}
 
     public onSubmit(form: any): void {
-        this.uiService.sendResetLinkEmail(form, '/api/password/email').subscribe((res) => {
+        this.uiService.sendResetLinkEmail(form).subscribe((res) => {
             this.sent = true
             this.message = res.message
         })
