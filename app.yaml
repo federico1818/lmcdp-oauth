@@ -1,12 +1,23 @@
 runtime: php55
-api_version: 1
+service: oauth
 threadsafe: true
 
 handlers:
 -   url: /
-    static_files: www/index.html
-    upload: www/index.html
+    static_files: dist/lmcdp-oauth/index.html
+    upload: dist/lmcdp-oauth/index.html
+
+-   url: /(.+\.(ico|js|css))$
+    static_files: dist/lmcdp-oauth/\1
+    upload: dist/lmcdp-oauth/.+\.(ico|js|css)$
+
+-   url: /assets/(.*)$
+    static_files: dist/lmcdp-oauth/assets/\1
+    upload: dist/lmcdp-oauth/assets/(.*)$
 
 -   url: /(.*)
-    static_files: www/\1
-    upload: www/(.*)
+    static_files: dist/lmcdp-oauth/index.html
+    upload: dist/lmcdp-oauth/index.html
+
+skip_files:
+-   ^(?!dist)
